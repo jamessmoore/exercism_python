@@ -11,7 +11,11 @@ def get_rounds(number):
     :return: list - current round and the two that follow.
     """
 
-    pass
+    return [
+        number,
+        number + 1,
+        number + 2
+    ]
 
 
 def concatenate_rounds(rounds_1, rounds_2):
@@ -22,7 +26,7 @@ def concatenate_rounds(rounds_1, rounds_2):
     :return: list - all rounds played.
     """
 
-    pass
+    return rounds_1 + rounds_2
 
 
 def list_contains_round(rounds, number):
@@ -33,7 +37,9 @@ def list_contains_round(rounds, number):
     :return: bool - was the round played?
     """
 
-    pass
+    if number in rounds:
+        return True
+    return False
 
 
 def card_average(hand):
@@ -42,9 +48,7 @@ def card_average(hand):
     :param hand: list - cards in hand.
     :return: float - average value of the cards in the hand.
     """
-
-    pass
-
+    return sum(hand) / len(hand)
 
 def approx_average_is_average(hand):
     """Return if the (average of first and last card values) OR ('middle' card) == calculated average.
@@ -52,9 +56,17 @@ def approx_average_is_average(hand):
     :param hand: list - cards in hand.
     :return: bool - does one of the approximate averages equal the `true average`?
     """
-
-    pass
-
+    print(list(hand))
+    calculated_average = card_average(hand)
+    print(calculated_average)
+    ##list_average = (hand[1] + hand[-1]) // len(hand) + 1
+    ##print(list_average)
+    ##middle_card_index = len(hand) // 2
+    ##print(hand[middle_card_index])
+    print("---")
+    #if hand[middle_card_index] == list_average:
+    #    return True
+    return False
 
 def average_even_is_average_odd(hand):
     """Return if the (average of even indexed card values) == (average of odd indexed card values).
@@ -62,8 +74,12 @@ def average_even_is_average_odd(hand):
     :param hand: list - cards in hand.
     :return: bool - are even and odd averages equal?
     """
+    odds = hand[::2]
+    evens = hand[1::2]
 
-    pass
+    if (sum(odds) / len(odds)) == (sum(evens) / len(evens)):
+        return True
+    return False
 
 
 def maybe_double_last(hand):
